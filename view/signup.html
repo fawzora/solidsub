@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | SolidSub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* Signup-specific tweak: allow form side to scroll on small screens */
+        .auth-form-side { align-items: flex-start; padding-top: 48px; padding-bottom: 48px; }
+        @media(min-width:769px){ .auth-form-side { align-items: center; } }
+    </style>
+</head>
+<body>
+
+<div class="auth-page">
+
+    <!-- ===== LEFT VISUAL PANEL ===== -->
+    <div class="auth-visual">
+        <div class="auth-visual-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="auth-visual-content">
+            <div class="brand">
+                <svg width="28" height="28" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:6px"><rect width="36" height="36" rx="8" fill="#0A5CF5"/><text x="18" y="25" text-anchor="middle" font-family="'Poppins','Segoe UI',sans-serif" font-size="22" font-weight="800" fill="white" letter-spacing="-1">S</text></svg>Solid<span>Sub</span>
+            </div>
+            <h2>Start saving on every transaction today</h2>
+            <p>Join over 50,000 Nigerians who trust SolidSub for their daily utility needs.</p>
+
+            <div class="auth-benefits">
+                <div class="auth-benefit">
+                    <div class="benefit-icon"><i class="bi bi-gift"></i></div>
+                    <span>Free wallet on signup, no hidden charges</span>
+                </div>
+                <div class="auth-benefit">
+                    <div class="benefit-icon"><i class="bi bi-percent"></i></div>
+                    <span>Up to 5% cashback on every purchase</span>
+                </div>
+                <div class="auth-benefit">
+                    <div class="benefit-icon"><i class="bi bi-people-fill"></i></div>
+                    <span>Refer friends and earn ₦200 per referral</span>
+                </div>
+                <div class="auth-benefit">
+                    <div class="benefit-icon"><i class="bi bi-clock-history"></i></div>
+                    <span>Transaction history & receipts always available</span>
+                </div>
+            </div>
+
+            <!-- Network logos -->
+            <div class="mt-5">
+                <p style="color:rgba(255,255,255,0.4);font-size:0.8rem;margin-bottom:12px">Supported networks & services</p>
+                <div class="d-flex gap-2 align-items-center flex-wrap">
+                    <img src="../assets/images/telecom/mtn_circle.png" style="width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,0.1)" alt="MTN">
+                    <img src="../assets/images/telecom/airtel_circle.png" style="width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,0.1)" alt="Airtel">
+                    <img src="../assets/images/telecom/glo_circle.png" style="width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,0.1)" alt="Glo">
+                    <img src="../assets/images/telecom/9mobile_circle.png" style="width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,0.1)" alt="9mobile">
+                    <span style="color:rgba(255,255,255,0.4);font-size:0.82rem">& more</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== RIGHT FORM PANEL ===== -->
+    <div class="auth-form-side">
+        <div class="auth-form-wrap">
+            <!-- Logo (mobile only) -->
+            <a href="../index.html" class="auth-logo d-lg-none">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#0A5CF5"/><text x="18" y="25" text-anchor="middle" font-family="'Poppins','Segoe UI',sans-serif" font-size="22" font-weight="800" fill="white" letter-spacing="-1">S</text></svg>
+                Solid<span>Sub</span>
+            </a>
+
+            <div class="auth-title">Create your account</div>
+            <div class="auth-sub">Already have an account? <a href="login.html" style="color:var(--primary);font-weight:600;text-decoration:none">Sign in</a></div>
+
+            <!-- Success message (hidden by default) -->
+            <div id="signupSuccess" class="alert alert-success mt-3 d-none" style="border-radius:10px;font-size:0.88rem">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                Account created! <a href="login.html" style="color:inherit;font-weight:600">Sign in now →</a>
+            </div>
+
+            <!-- Error message -->
+            <div id="signupAlert" class="alert alert-danger mt-3 d-none" role="alert" style="border-radius:10px;font-size:0.88rem">
+                <i class="bi bi-exclamation-circle-fill me-2"></i>
+                <span id="signupAlertMsg">Something went wrong. Please try again.</span>
+            </div>
+
+            <form class="auth-form" id="signupForm" novalidate>
+
+                <!-- Name row -->
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="auth-input-group">
+                            <label class="input-label" for="firstName">First Name</label>
+                            <i class="bi bi-person input-icon"></i>
+                            <input type="text" id="firstName" class="auth-input" placeholder="John" autocomplete="given-name">
+                            <div class="input-error" id="firstNameError">First name required.</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="auth-input-group">
+                            <label class="input-label" for="lastName">Last Name</label>
+                            <i class="bi bi-person input-icon"></i>
+                            <input type="text" id="lastName" class="auth-input" placeholder="Doe" autocomplete="family-name">
+                            <div class="input-error" id="lastNameError">Last name required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="auth-input-group">
+                    <label class="input-label" for="regEmail">Email Address</label>
+                    <i class="bi bi-envelope input-icon"></i>
+                    <input type="email" id="regEmail" class="auth-input" placeholder="you@example.com" autocomplete="email">
+                    <div class="input-error" id="regEmailError">Enter a valid email address.</div>
+                </div>
+
+                <!-- Phone -->
+                <div class="auth-input-group">
+                    <label class="input-label" for="regPhone">Phone Number</label>
+                    <i class="bi bi-telephone input-icon"></i>
+                    <input type="tel" id="regPhone" class="auth-input" placeholder="080XXXXXXXX" autocomplete="tel" maxlength="11">
+                    <div class="input-error" id="regPhoneError">Enter a valid Nigerian phone number.</div>
+                </div>
+
+                <!-- Referral code (optional) -->
+                <div class="auth-input-group">
+                    <label class="input-label" for="referral">Referral Code <span style="font-weight:400;color:var(--text-muted)">(optional)</span></label>
+                    <i class="bi bi-person-badge input-icon"></i>
+                    <input type="text" id="referral" class="auth-input" placeholder="Enter referral code">
+                </div>
+
+                <!-- Password -->
+                <div class="auth-input-group">
+                    <label class="input-label" for="regPassword">Password</label>
+                    <i class="bi bi-lock input-icon"></i>
+                    <input type="password" id="regPassword" class="auth-input" placeholder="Create a strong password" autocomplete="new-password">
+                    <button type="button" class="toggle-password" data-target="regPassword" aria-label="Toggle password">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <div class="input-error" id="regPasswordError">Password must be at least 8 characters.</div>
+                    <!-- Strength meter -->
+                    <div class="password-strength mt-2" id="strengthMeter" style="display:none">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <div class="strength-label" id="strengthLabel"></div>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="auth-input-group">
+                    <label class="input-label" for="regConfirm">Confirm Password</label>
+                    <i class="bi bi-lock-fill input-icon"></i>
+                    <input type="password" id="regConfirm" class="auth-input" placeholder="Repeat your password" autocomplete="new-password">
+                    <button type="button" class="toggle-password" data-target="regConfirm" aria-label="Toggle password">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <div class="input-error" id="regConfirmError">Passwords do not match.</div>
+                </div>
+
+                <!-- Terms -->
+                <div class="terms-check">
+                    <input type="checkbox" id="agreeTerms">
+                    <label for="agreeTerms">
+                        I agree to SolidSub's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                <div class="input-error" id="termsError" style="margin-top:-8px;margin-bottom:8px">You must accept the terms to continue.</div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn-auth" id="signupBtn">
+                    <span id="signupBtnText">Create Free Account</span>
+                    <span id="signupBtnSpinner" class="d-none">
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>Creating account...
+                    </span>
+                </button>
+
+            </form>
+
+            <div class="text-center mt-4">
+                <a href="../index.html" class="text-muted" style="font-size:0.83rem;text-decoration:none">
+                    <i class="bi bi-arrow-left me-1"></i> Back to homepage
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Toggle password visibility
+    document.querySelectorAll('.toggle-password').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = document.getElementById(btn.dataset.target);
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('bi-eye', 'bi-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('bi-eye-slash', 'bi-eye');
+            }
+        });
+    });
+
+    // Password strength meter
+    const regPassword = document.getElementById('regPassword');
+    const strengthMeter = document.getElementById('strengthMeter');
+    const strengthFill = document.getElementById('strengthFill');
+    const strengthLabel = document.getElementById('strengthLabel');
+
+    function getStrength(pw) {
+        let score = 0;
+        if (pw.length >= 8) score++;
+        if (pw.length >= 12) score++;
+        if (/[A-Z]/.test(pw)) score++;
+        if (/[0-9]/.test(pw)) score++;
+        if (/[^A-Za-z0-9]/.test(pw)) score++;
+        return score;
+    }
+
+    regPassword.addEventListener('input', () => {
+        const pw = regPassword.value;
+        if (!pw) { strengthMeter.style.display = 'none'; return; }
+        strengthMeter.style.display = 'block';
+        const score = getStrength(pw);
+        const levels = [
+            { label: 'Very weak', color: '#ef4444', width: '20%' },
+            { label: 'Weak', color: '#f97316', width: '40%' },
+            { label: 'Fair', color: '#eab308', width: '60%' },
+            { label: 'Strong', color: '#22c55e', width: '80%' },
+            { label: 'Very strong', color: '#16a34a', width: '100%' },
+        ];
+        const lvl = levels[Math.min(score - 1, 4)] || levels[0];
+        strengthFill.style.width = lvl.width;
+        strengthFill.style.background = lvl.color;
+        strengthLabel.textContent = lvl.label;
+        strengthLabel.style.color = lvl.color;
+    });
+
+    // Phone number: only allow digits
+    const regPhone = document.getElementById('regPhone');
+    regPhone.addEventListener('input', () => {
+        regPhone.value = regPhone.value.replace(/\D/g, '').slice(0, 11);
+    });
+
+    // Validation helpers
+    function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+    function validatePhone(p) { return /^0[789][01]\d{8}$/.test(p); }
+
+    function showErr(inputId, errorId, show) {
+        const input = document.getElementById(inputId);
+        const err = document.getElementById(errorId);
+        if (show) {
+            input.classList.add('is-invalid');
+            input.classList.remove('is-valid');
+            err.style.display = 'block';
+        } else {
+            input.classList.remove('is-invalid');
+            input.classList.add('is-valid');
+            err.style.display = 'none';
+        }
+    }
+
+    // Live blur validation
+    document.getElementById('firstName').addEventListener('blur', () => {
+        showErr('firstName', 'firstNameError', !document.getElementById('firstName').value.trim());
+    });
+    document.getElementById('lastName').addEventListener('blur', () => {
+        showErr('lastName', 'lastNameError', !document.getElementById('lastName').value.trim());
+    });
+    document.getElementById('regEmail').addEventListener('blur', () => {
+        showErr('regEmail', 'regEmailError', !validateEmail(document.getElementById('regEmail').value));
+    });
+    document.getElementById('regPhone').addEventListener('blur', () => {
+        showErr('regPhone', 'regPhoneError', !validatePhone(regPhone.value));
+    });
+    document.getElementById('regPassword').addEventListener('blur', () => {
+        showErr('regPassword', 'regPasswordError', document.getElementById('regPassword').value.length < 8);
+    });
+    document.getElementById('regConfirm').addEventListener('blur', () => {
+        const match = document.getElementById('regPassword').value === document.getElementById('regConfirm').value;
+        showErr('regConfirm', 'regConfirmError', !match);
+    });
+
+    // Form submit
+    document.getElementById('signupForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const fn = document.getElementById('firstName').value.trim();
+        const ln = document.getElementById('lastName').value.trim();
+        const em = document.getElementById('regEmail').value.trim();
+        const ph = regPhone.value.trim();
+        const pw = document.getElementById('regPassword').value;
+        const cf = document.getElementById('regConfirm').value;
+        const terms = document.getElementById('agreeTerms').checked;
+
+        let valid = true;
+        if (!fn) { showErr('firstName','firstNameError',true); valid=false; }
+        else showErr('firstName','firstNameError',false);
+        if (!ln) { showErr('lastName','lastNameError',true); valid=false; }
+        else showErr('lastName','lastNameError',false);
+        if (!validateEmail(em)) { showErr('regEmail','regEmailError',true); valid=false; }
+        else showErr('regEmail','regEmailError',false);
+        if (!validatePhone(ph)) { showErr('regPhone','regPhoneError',true); valid=false; }
+        else showErr('regPhone','regPhoneError',false);
+        if (pw.length < 8) { showErr('regPassword','regPasswordError',true); valid=false; }
+        else showErr('regPassword','regPasswordError',false);
+        if (pw !== cf) { showErr('regConfirm','regConfirmError',true); valid=false; }
+        else showErr('regConfirm','regConfirmError',false);
+
+        const termsErr = document.getElementById('termsError');
+        if (!terms) { termsErr.style.display = 'block'; valid=false; }
+        else termsErr.style.display = 'none';
+
+        if (!valid) return;
+
+        // Simulate loading
+        const btn = document.getElementById('signupBtn');
+        btn.disabled = true;
+        document.getElementById('signupBtnText').classList.add('d-none');
+        document.getElementById('signupBtnSpinner').classList.remove('d-none');
+        document.getElementById('signupAlert').classList.add('d-none');
+
+        setTimeout(() => {
+            btn.disabled = false;
+            document.getElementById('signupBtnText').classList.remove('d-none');
+            document.getElementById('signupBtnSpinner').classList.add('d-none');
+            // Show success (demo)
+            document.getElementById('signupSuccess').classList.remove('d-none');
+            document.getElementById('signupForm').reset();
+            document.querySelectorAll('.auth-input').forEach(i => i.classList.remove('is-valid','is-invalid'));
+            strengthMeter.style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 2000);
+    });
+</script>
+</body>
+</html>
